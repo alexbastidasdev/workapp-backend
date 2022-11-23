@@ -6,6 +6,7 @@ export const emailRegistro = async (datos) => {
   const transport = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -15,7 +16,7 @@ export const emailRegistro = async (datos) => {
   // Información del email
 
   const info = await transport.sendMail({
-    from: '"workApp - Administrador de Proyectos" <cuentas@workapp.com>',
+    from: '"workApp - Administrador de Proyectos"',
     to: email,
     subject: "workApp - Comprueba tu cuenta",
     text: "Comprueba tu cuenta en workApp",
@@ -37,6 +38,7 @@ export const emailOlvidePassword = async (datos) => {
   const transport = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
@@ -46,9 +48,9 @@ export const emailOlvidePassword = async (datos) => {
   // Información del email
 
   const info = await transport.sendMail({
-    from: '"workApp - Administrador de Proyectos" <cuentas@workapp.com>',
+    from: '"workApp - Administrador de Proyectos"',
     to: email,
-    subject: "workApp - Reestablece tu Password",
+    subject: "workApp - Reestablece tu Password", 
     text: "Reestablece tu Password",
     html: `<p>Hola: ${nombre} has solicitado reestablecer tu password</p>
 
